@@ -4,14 +4,22 @@ public class SelectAllQuestion extends MultipleChoiceQuestion {
 
 	public SelectAllQuestion(String prompt, String answer, String[] choices) {
 		//Hint: 1 point per choice
-		//FIXME
+		super(prompt, answer, choices.length, choices);
 	}
 	
 	public int checkAnswer(String givenAnswer) {
-		//FIXME Should return partial credit (if earned)!
-		return 0;
-	}
+	  int totalPoints = 4;
 	
+	  for(int i =0; i < givenAnswer.length(); i++){
+	     if (!getAnswer().contains("" + givenAnswer.charAt(i))){
+	    	 totalPoints--;
+	     }	 
+	  }
+	  for(int i+0; i < givenAnswer.length(); i++){
+		  
+	  }
+	  return totalPoints;
+	}
 	public static void main(String[] args) {
 		String[] choices = {"instance variables", "git", "methods", "eclipse"};
 		Question selectAll = new SelectAllQuestion("Select all of the following that can be found within a class:", "13", choices);
